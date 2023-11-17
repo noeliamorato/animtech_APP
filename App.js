@@ -1,18 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-//screens
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
+import MapScreen from './screens/MapScreen'; // Asegúrate de tener esta pantalla
+import GenerarQR from './screens/GenerarQR';
 
-export default function App() {
-  return <Login/>;
-}
+const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="MapScreen" component={MapScreen} />
+        <Stack.Screen name="GenerarQR" component={GenerarQR} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;

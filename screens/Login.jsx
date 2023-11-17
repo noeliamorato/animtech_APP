@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { StyledContainer, InnerContainer, PageLogo, PageTitle, SubTitle, Button } from './../components/styles';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
 
-  const handleLogin = () => {}
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate('MapScreen');
+  }
 
   return (
     <StyledContainer>
@@ -43,7 +48,8 @@ const Login = () => {
           style={{width:280, borderWidth:1, borderColor:"#0005",borderRadius:10, paddingHorizontal:10,paddingVertical:5,}}
         />
         {/* <Button title="Iniciar Sesión" onPress={handleLogin} /> */}
-        <TouchableOpacity style={{borderWidth:1,borderRadius:10 ,width:"100%",paddingHorizontal:10, paddingVertical:5, borderColor: "#0005"}}>
+        <TouchableOpacity style={{borderWidth:1,borderRadius:10 ,width:"100%",paddingHorizontal:10, paddingVertical:5, borderColor: "#0005"}}
+        onPress={handleLogin} >
           <Text>
           Iniciar Sesión
           </Text>
@@ -53,7 +59,7 @@ const Login = () => {
           Registro
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{borderWidth:1,borderRadius:10 ,width:"100%",paddingHorizontal:10, paddingVertical:5, borderColor: "#0005"}}>
+        <TouchableOpacity style={{borderWidth:1,borderRadius:10 ,width:"100%",paddingHorizontal:10, paddingVertical:5, borderColor: "#0005"}} >
           <Text>
           Iniciar con Google
           </Text>
