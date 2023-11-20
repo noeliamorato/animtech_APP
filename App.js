@@ -5,6 +5,7 @@ import Login from './screens/Login';
 import MapScreen from './screens/MapScreen'; // Asegúrate de tener esta pantalla
 import GenerarQR from './screens/GenerarQR';
 
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
