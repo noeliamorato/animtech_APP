@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import useLocationStore from '../context/LocationStore';
@@ -10,6 +11,7 @@ const MapScreen = () => {
   const [location, setLocation] = useState(null);
 
   const setLocationdata = useLocationStore((state) => state.setLocation);
+
   const handleNavigateToQRScreen = () => {
     navigation.navigate('GenerarQR');
   };
@@ -34,41 +36,93 @@ const MapScreen = () => {
 
     getLocation();
   }, []);
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
       {location && (
-        <MapView
-          style={{ flex: 1 }}
-          initialRegion={{
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{ latitude: location.coords.latitude, longitude: location.coords.longitude }}
-            title="Mi ubicación"
-            description="Aquí estoy"
-          />
-        </MapView>
+        <View style={{ position: 'relative', width: '100%', height: 500, borderRadius: 10, overflow: 'hidden' }}>
+          <MapView
+            style={{ width: '100%', height: '100%' }}
+            initialRegion={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          >
+            <Marker
+              coordinate={{ latitude: location.coords.latitude, longitude: location.coords.longitude }}
+              title="Mi ubicación"
+              description="Aquí estoy"
+            />
+          </MapView>
+        </View>
       )}
 
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 20,
-          left: 20,
-          zIndex: 999,
-          borderWidth: 1,
-          borderRadius: 10,
-          padding: 10,
-          backgroundColor: 'lightblue',
-        }}
-        onPress={handleNavigateToQRScreen}
-      >
-        <Text>QR</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'lightblue',
+            margin: 10,
+          }}
+          onPress={handleNavigateToQRScreen}
+        >
+          <Text>Generar QR</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'lightgrey',
+            margin: 10,
+          }}
+        />
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'lightgrey',
+            margin: 10,
+          }}
+        />
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'lightgrey',
+            margin: 10,
+          }}
+        />
+      </View>
+
+      {location && (
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
+          <Text style={{ marginRight: 10 }}>Aquí estoy</Text>
+          <Ionicons name="md-paw" size={32} color="black" />
+        </View>
+      )}
+
+      {location && (
+        <View
+          style={{
+            width: '80%',
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'lightgrey',
+            alignItems: 'center',
+          }}
+        >
+          <TextInput placeholder="Espere a que alguien escanee a tu mascota" />
+        </View>
+      )}
     </View>
   );
 };

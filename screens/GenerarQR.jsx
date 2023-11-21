@@ -23,6 +23,7 @@ const GenerarQR = () => {
     color: '',
     tamaño: '',
     sexo: '',
+    //falta raza
   });
   const [errorNombre, setErrorNombre] = useState('');
   const [errorEdad, setErrorEdad] = useState('');
@@ -34,14 +35,13 @@ const GenerarQR = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [image, setImage] = useState(null);
 
-
   const location = useLocationStore((state) => state.location);
 
-  const [qrContent, setQrContent] = useState({location: location});
+  const [qrContent, setQrContent] = useState({ location: location });
   const [modalVisible, setModalVisible] = useState(false);
 
   const fadeAnim = useState(new Animated.Value(0))[0];
- console.log(qrContent)
+  console.log(qrContent);
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
@@ -228,7 +228,7 @@ const GenerarQR = () => {
               <Text style={styles.buttonText}>Cerrar</Text>
             </TouchableOpacity>
           </Animated.View>
-        </View> 
+        </View>
       </Modal>
     </View>
   );
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection:"column-reverse",
+    flexDirection: 'column-reverse',
   },
   modalContainer: {
     backgroundColor: 'white',
@@ -308,15 +308,13 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    
     width: '100%',
     aspectRatio: 1, // Para mantener el aspecto cuadrado
     overflow: 'hidden',
-    marginBottom: 20, // Espacio si hay imagen 
-    
+    marginBottom: 20, // Espacio si hay imagen
   },
   image: {
-    marginTop:3,
+    marginTop: 3,
     flex: 1,
     width: '100%',
     height: '100%',
