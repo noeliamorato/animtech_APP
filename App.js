@@ -13,6 +13,7 @@ import Mapas from './src/screens/Mapas';
 import MisMascotas from './src/screens/MisMascotas';
 import Profesionales from './src/screens/Profesionales';
 import Salud from './src/screens/Salud';
+import ModalAgregarMascota from './src/screens/Inicio/ModalAgregarMascota';
 
 
 const Stack = createNativeStackNavigator();
@@ -33,6 +34,8 @@ const App = () => {
         <Stack.Screen name="MisMascotas" component={MisMascotas} />
         <Stack.Screen name="Profesionales" component={Profesionales} />
         <Stack.Screen name="Salud" component={Salud} />
+        <Stack.Screen name="ModalAgregarMascota" component={ModalAgregarMascota} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
