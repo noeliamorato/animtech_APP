@@ -60,7 +60,7 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log('Usuario autenticado:', userCredential.user);
-      navigation.navigate('MapScreen');
+      navigation.navigate('Welcome');
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       // Manejo de errores - puedes mostrar un mensaje de error al usuario
