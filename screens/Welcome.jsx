@@ -14,13 +14,13 @@ const Welcome = () => {
           fontSize: 16,
         },
         tabStyle: {
-          width: 120, // Ancho de cada pestaña
+          width: 120, 
         },
         style: {
-          alignItems: 'center', // Alineación en el centro
+          alignItems: 'center', 
           justifyContent: 'center',
         },
-        scrollEnabled: true, // Habilitar el scroll
+        scrollEnabled: true, 
       }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -67,7 +67,7 @@ const Welcome = () => {
       />
       <Tab.Screen
         name="Mapas"
-        component={require("../src/screens/Mapas").default}
+        component={require("./MapScreen").default}
       />
       <Tab.Screen
         name="Cuidar"

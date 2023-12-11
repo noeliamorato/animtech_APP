@@ -22,7 +22,7 @@ const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Salud">
           <Stack.Screen name="Login" component={Login}   />
           <Stack.Screen name="MapScreen" component={MapScreen} />
           <Stack.Screen name="GenerarQR" component={GenerarQR} />
