@@ -27,8 +27,8 @@ const Inicio = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Sección Mis Mascotas */}
-      <View style={styles.sectionContainer}>
+       {/* Sección Mis Mascotas */}
+       <View style={styles.sectionContainer}>
         <View style={styles.sectionTitleContainer}>
           <Text style={[styles.sectionTitle, { color: "#456" }]}>
             Mis Mascotas
@@ -46,7 +46,9 @@ const Inicio = () => {
 
         <TouchableOpacity onPress={openModalMascota}>
           <View style={[styles.sectionContent, { backgroundColor: "#DEF" }]}>
-            <Text>foto de mascota</Text>
+            <View style={styles.circle}>
+              <Text>foto de mascota</Text>
+            </View>
           </View>
         </TouchableOpacity>
 
@@ -117,8 +119,8 @@ const Inicio = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#F0F4F8",
     padding: 20,
+    
   },
   sectionContainer: {
     marginBottom: 15,
@@ -135,7 +137,18 @@ const styles = StyleSheet.create({
   },
   sectionContent: {
     width: 360,
+    height: 120, 
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+
+  circle: {
+    width: 80,
     height: 80,
+    borderRadius: 40,
+    backgroundColor: '#0003',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   addButton: {
     flexDirection: "row",
@@ -147,7 +160,9 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   tareasContent: {
-    backgroundColor: "#E6F9FF",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
   accionesContent: {
     backgroundColor: "#F0F4F8",
