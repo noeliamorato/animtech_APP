@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 //screens
 import Login from './screens/Login';
+import Salud from '../src/screens/Salud';
 
 export default function App() {
   return <Login/>;
