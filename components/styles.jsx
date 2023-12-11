@@ -11,6 +11,7 @@ export const InnerContainer =styled.View`
   height:100%;
     width: 100%;
     align-items: center;
+    position: "relative";
 `;
 
 export const PageLogo =styled.Image`

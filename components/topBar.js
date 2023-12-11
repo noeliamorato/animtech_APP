@@ -3,38 +3,28 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import userContext from "../context/userContext";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 const TopBar = () => {
   const { setUser, user } = userContext();
-  console.log(user);
-
   return (
     <View
       style={{
         width: "100%",
         height: 60,
-        backgroundColor: "#23606E",
+        backgroundColor: "#008F8C",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
       }}
     >
-      <Text style={{ color: "#fff" }}>Usuario : {user.email}</Text>
-      <TouchableOpacity
-        onPress={() => router.replace("./Login")}
-        style={{
-          padding: 10,
-          backgroundColor: "#fff",
-          height: "100%",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text>Salir</Text>
+      <TouchableOpacity onPress={() => router.replace("/Login")}>
+        <Text style={{ transform: "rotate(180deg)" }}>
+          <MaterialCommunityIcons name="location-exit" size={24} color="#fff" />
+        </Text>
       </TouchableOpacity>
+      <Text style={{ color: "#fff" }}>{user.email}</Text>
+      <Text style={{ color: "#fff" }}>Animtech </Text>
     </View>
   );
 };
-
 export default TopBar;

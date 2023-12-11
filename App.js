@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "./app/screens/Login";
+import Login from "./app/Login";
 import MapScreen from "./app/screens/Mapas/MapScreen"; // Asegúrate de tener esta pantalla
 import GenerarQR from "./screens/GenerarQR";
 import Welcome from "./screens/Welcome";
