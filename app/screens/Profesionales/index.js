@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Asegúrate de tener instalado el paquete de iconos
+import { useEffect } from 'react';
+import TopContext from '../../../context/TopContext';
 
 const Profesionales = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Profesionales");
+  },[])
   const [seccionActual, setSeccionActual] = useState('Guardados');
   const [tipo, setTipo] = useState('');
   const [localizacion, setLocalizacion] = useState('');

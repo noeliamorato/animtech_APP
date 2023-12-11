@@ -14,30 +14,30 @@ const ModalOrdenes = ({ visible, onCancel, onConfirm }) => {
   const [selectedCategory, setSelectedCategory] = useState("Basicos");
 
   const basicos = [
-    { nombre: "Sentarse", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Acostarse", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Levantarse", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "No Moverse", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Venir", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Buscar", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Quedarse", imagen: require("./imgordenes/obediencia.jpg") },
-    { nombre: "Estar", imagen: require("./imgordenes/obediencia.jpg") },
+    { nombre: "Sentarse", imagen: require("./imgordenes/sentarse.jpg") },
+    { nombre: "Acostarse", imagen: require("./imgordenes/acostado.jpg") },
+    { nombre: "Levantarse", imagen: require("./imgordenes/levantarse.jpg") },
+    { nombre: "No Moverse", imagen: require("./imgordenes/nomoverse.jpg") },
+    { nombre: "Venir", imagen: require("./imgordenes/venir.jpg") },
+    { nombre: "Buscar", imagen: require("./imgordenes/buscar.jpg") },
+    { nombre: "Quedarse", imagen: require("./imgordenes/quedarse.jpg") },
+    { nombre: "Estar", imagen: require("./imgordenes/nomoverse.jpg") },
   ];
 
   const divertidos = [
     {
       nombre: "Dar la pata",
-      imagen: require("./imgordenes/comportamiento.jpg"),
+      imagen: require("./imgordenes/patita.jpg"),
     },
     {
       nombre: "Hacer piruetas",
-      imagen: require("./imgordenes/comportamiento.jpg"),
+      imagen: require("./imgordenes/jugando.jpg"),
     },
-    { nombre: "Buscar", imagen: require("./imgordenes/comportamiento.jpg") },
-    { nombre: "Jugar", imagen: require("./imgordenes/comportamiento.jpg") },
-    { nombre: "Bailar", imagen: require("./imgordenes/comportamiento.jpg") },
-    { nombre: "Sonreír", imagen: require("./imgordenes/comportamiento.jpg") },
-    { nombre: "Saltar", imagen: require("./imgordenes/comportamiento.jpg") },
+    { nombre: "Buscar", imagen: require("./imgordenes/buscar.jpg") },
+    { nombre: "Jugar", imagen: require("./imgordenes/jugando.jpg") },
+    { nombre: "Bailar", imagen: require("./imgordenes/saltando.jpg") },
+    { nombre: "Sonreír", imagen: require("./imgordenes/sonreir.jpg") },
+    { nombre: "Saltar", imagen: require("./imgordenes/saltando.jpg") },
   ];
 
   const renderOrdenes = () => {
@@ -135,28 +135,27 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: 20,
-    
   },
   ordenItem: {
-    width: '48%',
+    width: "48%",
     height: 150,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
     marginBottom: 10,
-    flexDirection: 'column',
-    position: 'relative',
+    flexDirection: "column",
+    position: "relative",
     padding: 10,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
   },
   ordenImage: {
     width: 100,
     height: 100,
     marginBottom: 10,
     borderRadius: 50,
-    backgroundColor:"#0001",
+    backgroundColor: "#0001",
   },
   ordenText: {
     fontSize: 15,
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   pawIcon: {
-    position: 'absolute',
+    position: "absolute",
     top: 5,
     left: 5,
   },

@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import QRCode from 'react-native-qrcode-svg';
-import useLocationStore from '../context/LocationStore';
+import useLocationStore from '../../../context/LocationStore';
 
 const GenerarQR = () => {
   const [datosMascota, setDatosMascota] = useState({

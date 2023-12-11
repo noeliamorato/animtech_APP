@@ -11,8 +11,15 @@ import { Ionicons } from "@expo/vector-icons";
 import Grificobarras from "../../../components/grificobarras";
 import GraficoTablas from "../../../components/graficoTablas";
 import GraficoLineas from "../../../components/graficoLineas";
+import TopContext from "../../../context/TopContext";
+import { useEffect } from "react";
 
 const Salud = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Salud");
+  },[])
   const [verestado, setVerestado] = useState("");
   return (
     <ScrollView style={{width:"100%"}}>

@@ -6,16 +6,21 @@ import { useNavigation } from "@react-navigation/native";
 import * as Location from "expo-location";
 import useLocationStore from "../../../context/LocationStore";
 import { ScrollView } from "react-native";
+import TopContext from "../../../context/TopContext";
+import { router } from "expo-router";
 
 const MapScreen = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Mapas");
+  },[])
+
   const navigation = useNavigation();
   const [location, setLocation] = useState(null);
 
   const setLocationdata = useLocationStore((state) => state.setLocation);
 
-  const handleNavigateToQRScreen = () => {
-    navigation.navigate("GenerarQR");
-  };
 
   useEffect(() => {
     const getLocation = async () => {
@@ -44,7 +49,7 @@ const MapScreen = () => {
 
   return (
     <ScrollView style={{ flex: 1 }}>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginBottom:20 }}>
         {location && (
           <View
             style={{
@@ -87,7 +92,7 @@ const MapScreen = () => {
               backgroundColor: "lightblue",
               margin: 10,
             }}
-            onPress={handleNavigateToQRScreen}
+            onPress={()=>(router.push("/screens/Mapas/GenerarQR"))}
           >
             <Text>Generar QR</Text>
           </TouchableOpacity>

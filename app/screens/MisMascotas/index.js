@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useEffect } from 'react';
+import TopContext from '../../../context/TopContext';
 
 const MisMascotas = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Mis mascotas");
+  },[])
   const [searchText, setSearchText] = useState('');
   const [mascotas] = useState([
     { id: 1, nombre: 'Luna' },

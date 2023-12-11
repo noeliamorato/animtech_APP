@@ -10,8 +10,15 @@ import ModalAgregarMascota from "./ModalAgregarMascota";
 import ModalAgregarTareas from "./ModalAgregarTareas";
 import ModalMascota from "./ModalMascota";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import TopContext from "../../../context/TopContext";
+import { useEffect } from "react";
 
 const Inicio = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Inicio");
+  },[])
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTareasVisible, setModalTareasVisible] = useState(false);
   const [modalMascotaVisible, setModalMascotaVisible] = useState(false);
@@ -119,7 +126,7 @@ const Inicio = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
+    padding: 10,
     
   },
   sectionContainer: {

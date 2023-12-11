@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text } from 'react-native';
 
 const Mapas = () => {
   
+  
   return (
     <View>
       <Text>Mapas</Text>

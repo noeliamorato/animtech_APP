@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import TopContext from '../../../context/TopContext';
+import { useEffect } from 'react';
 //import { Calendar } from 'react-native-calendars';
 
 
 const Agenda = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Agenda");
+  },[])
   const [currentSection, setCurrentSection] = useState('Calendario');
 
   const handleNavigation = (section) => {

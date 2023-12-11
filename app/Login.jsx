@@ -154,7 +154,7 @@ const Login = () => {
             borderRadius: 5,
             padding: 8,
             marginVertical: 5,
-            width: "70%",
+            width: "80%",
           }}
         />
         <TextInput
@@ -167,7 +167,7 @@ const Login = () => {
             borderRadius: 5,
             padding: 8,
             marginVertical: 5,
-            width: "70%",
+            width: "80%",
           }}
         />
         <TouchableOpacity

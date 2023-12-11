@@ -6,8 +6,15 @@ import ModalComidas from "./ModalComidas";
 import ModalMedicamentos from "./ModalMedicamentos";
 import ModalDesechos from "./ModalDesechos";
 import ModalNutricion from "./ModalNutricion";
+import TopContext from "../../../context/TopContext";
+import { useEffect } from "react";
 
 const Cuidar = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Cuidar");
+  },[])
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedModal, setSelectedModal] = useState(null);
 

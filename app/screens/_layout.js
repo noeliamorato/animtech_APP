@@ -3,12 +3,14 @@ import React from "react";
 import { Slot } from "expo-router";
 import FooterBar from "../../components/footerBar";
 import TopBar from "../../components/topBar";
+import TopText from "../../components/TopText";
 
 const ConfigNav = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{}}>
       <TopBar />
-      <View style={{ flex: 1 }}>
+      <TopText />
+      <View style={{ height:"74%" }}>
         <Slot />
       </View>
       <FooterBar />

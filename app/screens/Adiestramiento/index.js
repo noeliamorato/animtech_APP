@@ -6,8 +6,17 @@ import ModalOrdenes from "./ModalOrdenes";
 import ModalAdiestramiento from "./ModalAdiestramiento";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import TopContext from "../../../context/TopContext";
+import { useEffect } from "react";
+
 
 const Adiestramiento = () => {
+  const{setTextoTop}= TopContext();
+
+  useEffect(()=>{
+    setTextoTop("Adiestramiento");
+  },[])
+
   const [modaladiestramiento, setModaladiestramiento] = useState(false);
   const [modalordenes, setModalordenes] = useState(false);
 

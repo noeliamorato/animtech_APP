@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./app/Login";
 import MapScreen from "./app/screens/Mapas/MapScreen"; // Asegúrate de tener esta pantalla
-import GenerarQR from "./screens/GenerarQR";
+import GenerarQR from "./app/screens/Mapas/GenerarQR";
 import Welcome from "./screens/Welcome";
 import Adiestramiento from "./src/screens/Adiestramiento";
 import Agenda from "./src/screens/Agenda";
