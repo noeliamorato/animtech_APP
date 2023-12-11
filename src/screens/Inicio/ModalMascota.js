@@ -1,24 +1,43 @@
 import React, { useState } from "react";
-import { Modal, View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { Modal, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import ModalGaleria from "./ModalGaleria";
 
 const ModalMascota = ({ visible, onCancel, mascotaData }) => {
+  const [galeriaVisible, setGaleriaVisible] = useState(false);
+
+  const openModalGaleria = () => setGaleriaVisible(true);
+  const closeModalGaleria = () => setGaleriaVisible(false);
+
 
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Detalles de la Mascota</Text>
 
-        <View style={styles.seccion}>
-          <Text style={styles.seccionTitulo}>Galería</Text>
+        <View style={[styles.sectionContent, styles.tareasContent]}>
+          <TouchableOpacity onPress={openModalGaleria}>
+            <Text style={[styles.buttonText, styles.textLight]}>
+              Galeria
+            </Text>
+          </TouchableOpacity>
         </View>
+
+        <ModalGaleria
+          visible={galeriaVisible}
+          onCancel={closeModalGaleria}
+          onConfirm={closeModalGaleria}
+        />
+        
+      </View>
 
         <View style={styles.botones}>
           <Button title="Cerrar" onPress={onCancel} />
         </View>
-      </View>
-    </Modal>
+
+       </Modal>
   );
 };
+
 
 const styles = StyleSheet.create({
   contenedor: {
