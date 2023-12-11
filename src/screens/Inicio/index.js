@@ -90,19 +90,19 @@ const Inicio = () => {
 
         <View style={[styles.sectionContent, styles.accionesContent]}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={[styles.accionItem, { borderColor: "#81D8FA" }]}>
-              <Ionicons name="calendar" size={24} color="#81D8FA" />
-              <Text style={{ color: "#81D8FA" }}>Registrar Actividad</Text>
+            <View style={[styles.accionItem, { borderColor: "skyblue" }]}>
+              <Ionicons name="calendar" size={24} color="skyblue" />
+              <Text style={{ color: "skyblue" }}>Registrar Actividad</Text>
             </View>
 
-            <View style={[styles.accionItem, { borderColor: "#B7BCF8" }]}>
-              <Ionicons name="list" size={24} color="#B7BCF8" />
-              <Text style={{ color: "#B7BCF8" }}>Mis Listas</Text>
+            <View style={[styles.accionItem, { borderColor: "orange" }]}>
+              <Ionicons name="list" size={24} color="orange" />
+              <Text style={{ color: "orange" }}>Mis Listas</Text>
             </View>
 
-            <View style={[styles.accionItem, { borderColor: "#0005" }]}>
-              <Ionicons name="paw" size={24} color="#0005" />
-              <Text style={{ color: "#0005" }}>Agendar Veterinario</Text>
+            <View style={[styles.accionItem, { borderColor: "#0009" }]}>
+              <Ionicons name="paw" size={24} color="#0009" />
+              <Text style={{ color: "#0009" }}>Agendar Veterinario</Text>
             </View>
 
             <View style={[styles.accionItem, { borderColor: "#f419" }]}>
@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: "500",
-    color: "#6495ED",
   },
   sectionContent: {
     width: 360,
@@ -156,13 +155,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    color: "#6495ED",
+    color: "#0009",
     marginLeft: 5,
   },
   tareasContent: {
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#0008",
   },
   accionesContent: {
     backgroundColor: "#F0F4F8",
