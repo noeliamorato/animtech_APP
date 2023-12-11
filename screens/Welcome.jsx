@@ -15,9 +15,7 @@ const Welcome = () => {
           justifyContent: "center",
         },
         showLabel: false,
-        tabBarStyle: {
-          height: 100,
-        },
+        tabBarWidth: 100,
       }}
     >
       <Tab.Screen
@@ -31,7 +29,7 @@ const Welcome = () => {
       />
       <Tab.Screen
         name="Mapas"
-        component={require("./MapScreen").default}
+        component={require("../app/screens/Mapas/MapScreen").default}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-map" size={size} color={color} />
