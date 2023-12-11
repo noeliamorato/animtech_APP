@@ -26,23 +26,28 @@ const RegisterModal = ({ onClose }) => {
   };
 
   return (
-    <View style={{ backgroundColor: 'white', borderRadius: 10, padding: 20, width: '80%', alignItems: 'center' }}>
-      <Text style={{ fontSize: 24, marginBottom: 20 }}>Registro de usuario</Text>
+    <View style={{ backgroundColor: '#f0f0f0', borderRadius: 20, padding: 30, width: '100%', alignItems: 'center' }}>
+       <TouchableOpacity onPress={onClose} style={{ position: 'absolute', top: 10, right: 10 }}>
+        <View >
+          <Text style={{ fontSize: 20, color: 'red', borderRadius: 50, padding: 8 }}>X</Text>
+        </View>
+      </TouchableOpacity>
+      <Text style={{ fontSize: 20, marginBottom: 20, color: '#333333' }}>Registro de Usuario</Text>
       <TextInput
         value={registerEmail}
         onChangeText={(text) => setRegisterEmail(text)}
         placeholder="Email"
-        style={{ borderWidth: 1, borderRadius: 5, padding: 10, marginBottom: 15, width: '100%' }}
+        style={{ borderWidth: 1, borderRadius: 10, padding: 15, marginBottom: 20, width: '100%', backgroundColor: '#ffffff' }}
       />
       <TextInput
         value={registerPassword}
         onChangeText={(text) => setRegisterPassword(text)}
         placeholder="Contraseña"
         secureTextEntry
-        style={{ borderWidth: 1, borderRadius: 5, padding: 10, marginBottom: 15, width: '100%' }}
+        style={{ borderWidth: 1, borderRadius: 10, padding: 15, marginBottom: 20, width: '100%', backgroundColor: '#ffffff' }}
       />
-      <TouchableOpacity onPress={handleRegister} style={{ backgroundColor: '#3498db', padding: 15, borderRadius: 5, width: '100%', alignItems: 'center' }}>
-        <Text style={{ fontSize: 18, color: 'white' }}>Registrarse</Text>
+      <TouchableOpacity onPress={handleRegister} style={{ backgroundColor: '#008F8C', padding: 10, borderRadius: 10, width: '100%', alignItems: 'center' }}>
+        <Text style={{ fontSize: 15, color: '#fff' }}>Registrarse</Text>
       </TouchableOpacity>
     </View>
   );
@@ -75,8 +80,8 @@ const Login = () => {
     <StyledContainer>
       <InnerContainer>
         <PageLogo source={require('./../assets/img/logo2.jpg')} />
-        <PageTitle>AnimTech</PageTitle>
-        <SubTitle>Tecnología para el bienestar animal y la gestión de animales callejeros</SubTitle>
+        <PageTitle style={{color:"#023535"}}>AnimTech</PageTitle>
+        <SubTitle style={{fontSize: 16, color:"#023535", padding:5}}>Tecnología para el bienestar animal y la gestión de animales callejeros</SubTitle>
 
         <TextInput
           value={email}
@@ -91,15 +96,19 @@ const Login = () => {
           secureTextEntry
           style={{ borderWidth: 1, borderRadius: 5, padding: 8, marginVertical: 5, width: '100%' }}
         />
-        <TouchableOpacity onPress={handleLogin} style={{ backgroundColor: 'lightblue', padding: 10, borderRadius: 5, marginVertical: 10 }}>
-          <Text style={{ fontSize: 16 }}>Iniciar Sesión</Text>
+        <TouchableOpacity onPress={handleLogin} style={{ width:'100%', backgroundColor: '#008F8C', padding: 10, borderRadius: 5, marginVertical: 10 }}>
+          <Text style={{ textAlign:"center", fontSize: 16, color:"#fff"}}>Iniciar Sesión</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={toggleRegisterModal} style={{ borderWidth: 1, borderRadius: 10, padding: 10, margin: 5 }}>
-          <Text>Registro</Text>
+        <TouchableOpacity onPress={toggleRegisterModal} style={{ width:'100%', backgroundColor: '#008F8C', padding: 10, borderRadius: 5, marginVertical: 10}}>
+          <Text style={{ textAlign:"center", fontSize: 16, color:"#fff"}}>Registro</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{ backgroundColor: '#23606E', padding: 10, borderRadius: 5, marginVertical: 10, marginTop:80, marginEnd:230 }}>
+          <Text style={{ fontSize: 15, color:"#fff"}}>Comunidad</Text>
         </TouchableOpacity>
 
         {showRegisterModal && (
-          <View style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: '#0008', justifyContent: 'center', alignItems: 'center' }}>
             <RegisterModal onClose={toggleRegisterModal} />
           </View>
         )}
