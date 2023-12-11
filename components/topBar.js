@@ -6,6 +6,8 @@ import userContext from "../context/userContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 const TopBar = () => {
   const { setUser, user } = userContext();
+
+const userEmailWithoutDomain = user.email.split("@")[0];
   return (
     <View
       style={{
@@ -22,7 +24,7 @@ const TopBar = () => {
           <MaterialCommunityIcons name="location-exit" size={24} color="#fff" />
         </Text>
       </TouchableOpacity>
-      <Text style={{ color: "#fff" }}>{user.email}</Text>
+      <Text style={{ color: "#fff" }}>{userEmailWithoutDomain}</Text>
       <Text style={{ color: "#fff" }}>Animtech </Text>
     </View>
   );

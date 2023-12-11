@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import {
   AntDesign,
@@ -14,12 +14,20 @@ const FooterBar = () => {
   return (
     <View
       style={{
-        flexDirection: "row",
         width: "100%",
+        flexDirection: "row",
         justifyContent: "space-around",
         backgroundColor: "#015958",
         height: 100,
         alignItems: "center",
+        elevation: 5,
+        shadowColor: "#0005",
+        shadowOffset: {
+          width: 0,
+          height: 5,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 5,
       }}
     >
       <TouchableOpacity onPress={() => router.push("/screens/Inicio")}>
