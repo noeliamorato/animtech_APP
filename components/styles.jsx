@@ -3,7 +3,7 @@ import { View, Text, Image } from "react-native";
 
 export const StyledContainer = styled.View`
     /* flex: 1; */
-    padding: 25px;
+    /* padding: 25px; */
     background-color: white;
 `;
 
@@ -11,7 +11,7 @@ export const InnerContainer =styled.View`
   height:100%;
     width: 100%;
     align-items: center;
-    position: "relative";
+    position: relative;
 `;
 
 export const PageLogo =styled.Image`

@@ -16,6 +16,7 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase-config";
 import { router } from "expo-router";
 import userContext from "../context/userContext";
+import { position } from "stylis";
 
 const app = initializeApp(firebaseConfig);
 
@@ -135,8 +136,8 @@ const Login = () => {
   };
 
   return (
-    <StyledContainer>
-      <InnerContainer>
+    <View style={{ flex: 1, position: "relative" }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <PageLogo source={require("./../assets/img/logo2.jpg")} />
         <PageTitle style={{ color: "#023535" }}>AnimTech</PageTitle>
         <SubTitle style={{ fontSize: 16, color: "#023535", padding: 5 }}>
@@ -153,7 +154,7 @@ const Login = () => {
             borderRadius: 5,
             padding: 8,
             marginVertical: 5,
-            width: "100%",
+            width: "70%",
           }}
         />
         <TextInput
@@ -166,13 +167,13 @@ const Login = () => {
             borderRadius: 5,
             padding: 8,
             marginVertical: 5,
-            width: "100%",
+            width: "70%",
           }}
         />
         <TouchableOpacity
           onPress={handleLogin}
           style={{
-            width: "100%",
+            width: "80%",
             backgroundColor: "#008F8C",
             padding: 10,
             borderRadius: 5,
@@ -186,7 +187,7 @@ const Login = () => {
         <TouchableOpacity
           onPress={toggleRegisterModal}
           style={{
-            width: "100%",
+            width: "80%",
             backgroundColor: "#008F8C",
             padding: 10,
             borderRadius: 5,
@@ -227,9 +228,8 @@ const Login = () => {
             <RegisterModal onClose={toggleRegisterModal} />
           </View>
         )}
-      </InnerContainer>
-  
-    </StyledContainer>
+      </View>
+    </View>
   );
 };
 
