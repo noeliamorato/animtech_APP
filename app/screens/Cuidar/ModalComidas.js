@@ -34,9 +34,7 @@ const ModalComidas = () => {
   const unidadesDeMedida = ["kg", "g", "grams", "unidades", "oz"]; // Puedes agregar más opciones según necesites
 
   const handleAgregarComida = async () => {
-
     console.log("Comida:", comida);
-
     const res = await peticionPost("comida", comida);
     if (res) {
       alert(res.message);

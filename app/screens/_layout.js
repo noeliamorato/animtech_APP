@@ -7,10 +7,10 @@ import TopText from "../../components/TopText";
 
 const ConfigNav = () => {
   return (
-    <View style={{}}>
+    <View style={{flex:1}}>
       <TopBar />
       <TopText />
-      <View style={{ height:"74%" }}>
+      <View style={{ flex:1}}>
         <Slot />
       </View>
       <FooterBar />

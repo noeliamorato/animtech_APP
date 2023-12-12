@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import React, { useState } from "react";
 import {
   View,
@@ -9,36 +9,26 @@ import {
   StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { peticionPost } from "../../../services/postRequest";
 
 const ModalMedicamentos = () => {
   const [medicamento, setMedicamento] = useState({
     nombre: "",
-    nota: "",
+    notas: "",
   });
-  const [savedData, setSavedData] = useState([]);
-  const handleGuardarMedicamento = () => {
-    // Aquí puedes implementar la lógica para guardar el medicamento
-    console.log("Medicamento guardado:", medicamento);
-    saveData();
-    setMedicamento({
-      nombre: "",
-      nota: "",
-    });
-  };
-
-  const saveData = async () => {
-    try {
-      const newItem = { id: Date.now(), text: medicamento };
-      const updatedData = [...savedData, newItem];
-
-      await AsyncStorage.setItem("medicamento", JSON.stringify(updatedData));
-      setSavedData(updatedData);
-
-      console.log("Datos guardados correctamente");
-    } catch (error) {
-      console.error("Error al guardar datos:", error);
+  const handleGuardarMedicamento = async () => {
+    const res = await peticionPost("medicamentos", medicamento);
+    if (res) {
+      alert(res.message);
+      setMedicamento({
+        nombre: "",
+        notas: "",
+      });
     }
+   
+   
   };
+
 
   return (
     <View style={styles.container}>
@@ -66,9 +56,9 @@ const ModalMedicamentos = () => {
           placeholder="Nota (max 500 caracteres)"
           multiline
           numberOfLines={4}
-          value={medicamento.nota}
+          value={medicamento.notas}
           onChangeText={(text) =>
-            setMedicamento({ ...medicamento, nota: text.slice(0, 500) })
+            setMedicamento({ ...medicamento, notas: text.slice(0, 500) })
           }
         />
       </View>

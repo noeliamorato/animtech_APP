@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
+  Image,
 } from "react-native";
 import ModalAgregarMascota from "./ModalAgregarMascota";
 import ModalAgregarTareas from "./ModalAgregarTareas";
@@ -14,11 +15,11 @@ import TopContext from "../../../context/TopContext";
 import { useEffect } from "react";
 
 const Inicio = () => {
-  const{setTextoTop}= TopContext();
+  const { setTextoTop } = TopContext();
 
-  useEffect(()=>{
+  useEffect(() => {
     setTextoTop("Inicio");
-  },[])
+  }, []);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTareasVisible, setModalTareasVisible] = useState(false);
   const [modalMascotaVisible, setModalMascotaVisible] = useState(false);
@@ -34,8 +35,8 @@ const Inicio = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-       {/* Sección Mis Mascotas */}
-       <View style={styles.sectionContainer}>
+      {/* Sección Mis Mascotas */}
+      <View style={styles.sectionContainer}>
         <View style={styles.sectionTitleContainer}>
           <Text style={[styles.sectionTitle, { color: "#456" }]}>
             Mis Mascotas
@@ -51,11 +52,30 @@ const Inicio = () => {
           onConfirm={closeModal}
         />
 
-        <TouchableOpacity onPress={openModalMascota}>
-          <View style={[styles.sectionContent, { backgroundColor: "#DEF" }]}>
-            <View style={styles.circle}>
-              <Text>foto de mascota</Text>
-            </View>
+        <TouchableOpacity
+          onPress={openModalMascota}
+          style={{
+            position: "relative",
+            backgroundColor: "#fff",
+            borderRadius: 10,
+            overflow: "hidden",
+            height: 150,
+          }}
+        >
+          <Image
+            source={{
+              uri: "https://hospitalveterinariodonostia.com/wp-content/uploads/2022/02/Personalidad-gatos.png",
+            }}
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+            }}
+            onError={(error) => console.error("Error loading image:", error)}
+          />
+
+          <View style={{ ...styles.circle, backgroundColor: "#fff7" }}>
+            <Text></Text>
           </View>
         </TouchableOpacity>
 
@@ -127,7 +147,6 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 10,
-    
   },
   sectionContainer: {
     marginBottom: 15,
@@ -143,18 +162,18 @@ const styles = StyleSheet.create({
   },
   sectionContent: {
     width: 360,
-    height: 120, 
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    height: 120,
+    justifyContent: "center",
+    alignItems: "flex-start",
   },
 
   circle: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#0003',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#0003",
+    justifyContent: "center",
+    alignItems: "center",
   },
   addButton: {
     flexDirection: "row",

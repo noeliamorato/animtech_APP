@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { peticionPost } from "../../../services/postRequest";
 
 const ModalDesechos = () => {
   const [desechos, setDesechos] = useState({
@@ -17,15 +18,17 @@ const ModalDesechos = () => {
     olor: "",
   });
 
-  const handleGuardarDesechos = () => {
-    // Aquí puedes implementar la lógica para guardar los desechos
-    console.log("Desechos guardados:", desechos);
-    setDesechos({
-      tipo: "",
-      textura: "",
-      color: "",
-      olor: "",
-    });
+  const handleGuardarDesechos = async () => {
+    const res = await peticionPost("desechos", desechos);
+    if (res) {
+      alert(res.message);
+      setDesechos({
+        tipo: "",
+        textura: "",
+        color: "",
+        olor: "",
+      });
+    }
   };
 
   return (

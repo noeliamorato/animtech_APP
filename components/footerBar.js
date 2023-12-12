@@ -32,42 +32,42 @@ const FooterBar = () => {
     >
       <TouchableOpacity onPress={() => router.push("/screens/Inicio")}>
         <Text>
-          <AntDesign name="home" size={28} color="white" />
+          <AntDesign name="home" size={32} color="white" />
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("/screens/Mapas/MapScreen")}>
         <Text>
-          <FontAwesome name="map-marker" size={28} color="#fff" />
+          <FontAwesome name="map-marker" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("/screens/Cuidar")}>
         <Text>
-          <Ionicons name="heart-dislike-outline" size={28} color="#fff" />
+          <Ionicons name="heart-dislike-outline" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("/screens/Salud")}>
         <Text>
-          <Fontisto name="doctor" size={28} color="#fff" />
+          <Fontisto name="doctor" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push("/screens/Agenda")}>
+      {/* <TouchableOpacity onPress={() => router.push("/screens/Agenda")}>
         <Text>
-          <AntDesign name="book" size={28} color="#fff" />
+          <AntDesign name="book" size={32} color="#fff" />
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity onPress={() => router.push("/screens/MisMascotas")}>
         <Text>
-          <FontAwesome5 name="dog" size={28} color="#fff" />
+          <FontAwesome5 name="dog" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("/screens/Adiestramiento")}>
         <Text>
-          <AntDesign name="team" size={28} color="#fff" />
+          <AntDesign name="team" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("/screens/Profesionales")}>
         <Text>
-          <FontAwesome name="user-md" size={28} color="#fff" />
+          <FontAwesome name="user-md" size={32} color="#fff" />
         </Text>
       </TouchableOpacity>
     </View>

@@ -8,14 +8,15 @@ import { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TopContext from "../../../context/TopContext";
 import { useEffect } from "react";
-
+import { FlatList } from "react-native";
+import { Image } from "react-native";
 
 const Adiestramiento = () => {
-  const{setTextoTop}= TopContext();
+  const { setTextoTop } = TopContext();
 
-  useEffect(()=>{
+  useEffect(() => {
     setTextoTop("Adiestramiento");
-  },[])
+  }, []);
 
   const [modaladiestramiento, setModaladiestramiento] = useState(false);
   const [modalordenes, setModalordenes] = useState(false);
@@ -27,17 +28,101 @@ const Adiestramiento = () => {
   const closeModalordenes = () => setModalordenes(false);
 
   const carouselData = [
-    { id: 1, color: "#FFC9C9" },
-    { id: 2, color: "#C9F5FF" },
-    { id: 3, color: "#D0F0C0" },
-    { id: 4, color: "#FFE4C4" },
-    { id: 5, color: "#D8BFD8" },
+    {
+      id: 1,
+      color: "#FFC9C9",
+      title: "Adiestramiento en obediencia",
+      description:
+        "Este adiestramiento se centra en enseñar comandos básicos y desarrollar obediencia en tu mascota.",
+    },
+    {
+      id: 2,
+      color: "#C9F5FF",
+      title: "Adiestramiento en agility",
+      description:
+        "Un adiestramiento divertido que implica superar obstáculos y mejorar la agilidad de tu perro.",
+    },
+    {
+      id: 3,
+      color: "#D0F0C0",
+      title: "Adiestramiento para cachorros",
+      description:
+        "Especialmente diseñado para cachorros, este adiestramiento se enfoca en el desarrollo temprano y la socialización.",
+    },
+    {
+      id: 4,
+      color: "#FFE4C4",
+      title: "Adiestramiento para comportamiento",
+      description:
+        "Soluciona problemas de comportamiento y mejora la relación con tu mascota a través de este adiestramiento.",
+    },
+    {
+      id: 5,
+      color: "#D8BFD8",
+      title: "Adiestramiento en trucos",
+      description:
+        "¡Diviértete enseñando trucos impresionantes a tu perro y fortalece vuestro vínculo!",
+    },
   ];
 
+  const adiestramientos = [
+    {
+      title: "Adiestramiento en obediencia",
+      popular: true,
+      image: require("./imgadiestramiento/obediencia.jpg"),
+    },
+    {
+      title: "Adiestramiento en agility",
+      popular: false,
+      image: require("./imgadiestramiento/agility.jpg"),
+    },
+    {
+      title: "Adiestramiento para cachorros",
+      popular: true,
+      image: require("./imgadiestramiento/cachorros.jpg"),
+    },
+    {
+      title: "Adiestramiento para comportamiento",
+      popular: false,
+      image: require("./imgadiestramiento/comportamiento.jpg"),
+    },
+    {
+      title: "Adiestramiento en trucos",
+      popular: true,
+      image: require("./imgadiestramiento/trucos.jpg"),
+    },
+  ];
+  const divertidos = [
+    {
+      nombre: "Dar la pata",
+      imagen: require("./imgordenes/patita.jpg"),
+    },
+    {
+      nombre: "Hacer piruetas",
+      imagen: require("./imgordenes/jugando.jpg"),
+    },
+    { nombre: "Buscar", imagen: require("./imgordenes/buscar.jpg") },
+    { nombre: "Jugar", imagen: require("./imgordenes/jugando.jpg") },
+    { nombre: "Bailar", imagen: require("./imgordenes/saltando.jpg") },
+    { nombre: "Sonreír", imagen: require("./imgordenes/sonreir.jpg") },
+    { nombre: "Saltar", imagen: require("./imgordenes/saltando.jpg") },
+  ];
   const renderItem = ({ item }) => (
-    <View style={[styles.carouselItem, { backgroundColor: item.color }]} />
+    <View style={[styles.carouselItem, { backgroundColor: item.color }]}>
+      <View style={{ padding: 10 }}>
+        <Text style={{ fontSize: 20, fontWeight: 900, paddingVertical: 10 }}>
+          {item.title}
+        </Text>
+        <Text>{item.description}</Text>
+      </View>
+    </View>
   );
 
+  const adiestramientosFiltrados = adiestramientos.filter(
+    (adiestramiento) => adiestramiento.popular
+  );
+
+  console.log(divertidos);
   return (
     <ScrollView style={styles.container}>
       <Carousel
@@ -60,23 +145,50 @@ const Adiestramiento = () => {
         onCancel={closeModaladiestramiento}
         onConfirm={closeModaladiestramiento}
       />
+
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 1</Text>
-        </View>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 2</Text>
-        </View>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 3</Text>
-        </View>
-        {/* Repite estos bloques de View según sea necesario */}
+        {adiestramientosFiltrados.map((item) => (
+          <View
+            key={item.title}
+            style={{ ...styles.box, position: "relative" }}
+          >
+            <AntDesign name="star" size={24} color="black" />
+            <Text style={styles.boxTitle}>Populares</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <Text
+                style={{
+                  ...styles.boxContent,
+                  width: 100,
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  position: "absolute",
+                  left: 0,
+                  bottom: -40,
+                }}
+              >
+                {item.title}
+              </Text>
+              <Image
+                source={item.image}
+                style={{
+                  width: 80,
+                  height: 100,
+                  position: "absolute",
+                  top: -55,
+                  right: -10,
+                }}
+              />
+            </View>
+          </View>
+        ))}
       </ScrollView>
 
       <TouchableOpacity onPress={openModalordenes}>
@@ -88,22 +200,48 @@ const Adiestramiento = () => {
         onConfirm={closeModalordenes}
       />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 1</Text>
-        </View>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 2</Text>
-        </View>
-        <View style={styles.box}>
-          <AntDesign name="star" size={24} color="black" />
-          <Text style={styles.boxTitle}>Populares</Text>
-          <Text style={styles.boxContent}>Contenido de la caja 3</Text>
-        </View>
-        {/* Repite estos bloques de View según sea necesario */}
+        {divertidos.map((item) => (
+          <View
+            key={item.title}
+            style={{ ...styles.box, position: "relative" }}
+          >
+            <AntDesign name="star" size={24} color="black" />
+            <Text style={styles.boxTitle}>Populares</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <Text
+                style={{
+                  ...styles.boxContent,
+                  width: 100,
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  position: "absolute",
+                  left: 0,
+                  bottom: -20,
+                }}
+              >
+                {item.nombre}
+              </Text>
+              <Image
+                source={item.imagen}
+                style={{
+                  width: 80,
+                  height: 100,
+                  position: "absolute",
+                  top: -55,
+                  right: -10,
+                }}
+              />
+            </View>
+          </View>
+        ))}
       </ScrollView>
     </ScrollView>
   );

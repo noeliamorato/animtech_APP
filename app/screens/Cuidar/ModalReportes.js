@@ -1,58 +1,229 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { peticionGet } from "../../../services/getRequest";
 
 const ModalReportes = () => {
-  const [savedData, setSavedData] = useState([]);
+  const [data, setData] = useState("");
+  const [desechosData, setDesechosData] = useState("");
+  const [medicamentos, setMedicamentos] = useState("");
+  const [nutricionData, setNutricionData] = useState("");
 
   useEffect(() => {
-    loadData();
+    const fetchData = async () => {
+      try {
+        const result = await peticionGet("comida");
+        setData(result);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+    const fetchDataDesechos = async () => {
+      try {
+        const result = await peticionGet("desechos");
+        setDesechosData(result);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+    const fetchDataMedicamentos = async () => {
+      try {
+        const result = await peticionGet("medicamentos");
+        setMedicamentos(result);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+    const fetchDataNutricion = async () => {
+      try {
+        const result = await peticionGet("nutricionmascota");
+        setNutricionData(result);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+    fetchDataNutricion();
+    fetchDataMedicamentos();
+    fetchDataDesechos();
+    fetchData();
   }, []);
 
-  const loadData = async () => {
-    try {
-      const savedValue = await AsyncStorage.getItem("medicamento");
-      if (savedValue !== null) {
-        setSavedData(JSON.parse(savedValue));
-      }
-    } catch (error) {
-      console.error("Error al cargar datos:", error);
-    }
-  };
-
-  console.log(savedData);
-
   return (
-    <View style={{ paddingVertical: 20 }}>
+    <View style={{ padding: 20 }}>
+      <Text style={{ padding: 10 }}>Comidas</Text>
+
       <ScrollView style={{ height: 200 }}>
-        <Text>Comidas</Text>
-        <Text> Azucar : {savedData.azucar}</Text>
-        <Text> Calorias : {savedData.calorias}</Text>
-        <Text>Cantidad : {savedData.cantidad}</Text>
-        <Text>Carbohidratos : {savedData.carbohidratos}</Text>
-        <Text>Nombre : {savedData.nombre}</Text>
-        <Text>Grasa : {savedData.grasa}</Text>
-        <Text>Proteina : {savedData.proteina}</Text>
-        <Text>Tipo : {savedData.tipo}</Text>
-        <Text>
-          Vitaminas: {savedData.vitaminas && savedData.vitaminas.join(", ")}
-        </Text>
+        <FlatList
+          style={{
+            flexDirection: "row",
+            gap: 5,
+            width: "96%",
+            flexWrap: "wrap",
+          }}
+          data={data}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                backgroundColor: "#fff",
+                marginVertical: 10,
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+                padding: 10,
+                borderRadius: 7,
+              }}
+            >
+              <View
+                style={{ backgroundColor: "#015958", padding: 10, width: 350 }}
+              >
+                <Text style={{ color: "#fff" }}>
+                  Nombre: {item.nombre} {item.apellido}
+                </Text>
+                <Text style={{ color: "#fff" }}>
+                  tipoAlimento: {item.tipoAlimento}
+                </Text>
+                <Text style={{ color: "#fff" }}>Cantidad: {item.cantidad}</Text>
+                <Text style={{ color: "#fff" }}>Horarios: {item.horarios}</Text>
+                <Text style={{ color: "#fff" }}>
+                  Observaciones: {item.observaciones}
+                </Text>
+                <Text style={{ color: "red" }}>
+                  Fecha: {new Date().toLocaleDateString()}
+                </Text>
+              </View>
+            </View>
+          )}
+        />
       </ScrollView>
       <ScrollView style={{ height: 200 }}>
         <Text>Medicacion</Text>
-        {savedData.map((item, index) => (
-          <View key={index} style={{width:"100"}}>
-            <Text>Nombre : {item.text.nombre}</Text>
-            <Text>Grasa : {item.text.nota}</Text>
-          </View>
-        ))}
+        <FlatList
+          style={{
+            flexDirection: "row",
+            gap: 5,
+            width: "96%",
+            flexWrap: "wrap",
+          }}
+          data={medicamentos}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                backgroundColor: "#fff",
+                marginVertical: 10,
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+                padding: 10,
+                borderRadius: 7,
+              }}
+            >
+              <View
+                style={{ backgroundColor: "#015958", padding: 10, width: 350 }}
+              >
+                <Text style={{ color: "#fff" }}>
+                  Nombre: {item.nombre} {item.apellido}
+                </Text>
+                <Text style={{ color: "#fff" }}>Nombre: {item.nombre}</Text>
+                <Text style={{ color: "#fff" }}>notas: {item.notas}</Text>
+                <Text style={{ color: "red" }}>
+                  Fecha: {new Date().toLocaleDateString()}
+                </Text>
+              </View>
+            </View>
+          )}
+        />
       </ScrollView>
       <ScrollView style={{ height: 200 }}>
         <Text>Desechos</Text>
+        <FlatList
+          style={{
+            flexDirection: "row",
+            gap: 5,
+            width: "96%",
+            flexWrap: "wrap",
+          }}
+          data={desechosData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                backgroundColor: "#fff",
+                marginVertical: 10,
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+                padding: 10,
+                borderRadius: 7,
+              }}
+            >
+              <View
+                style={{ backgroundColor: "#015958", padding: 10, width: 350 }}
+              >
+                <Text style={{ color: "#fff" }}>
+                  Nombre: {item.nombre} {item.apellido}
+                </Text>
+                <Text style={{ color: "#fff" }}>Tipo: {item.tipo}</Text>
+                <Text style={{ color: "#fff" }}>Textura: {item.textura}</Text>
+                <Text style={{ color: "#fff" }}>Color: {item.color}</Text>
+                <Text style={{ color: "#fff" }}>Olor: {item.olor}</Text>
+
+                <Text style={{ color: "red" }}>
+                  Fecha: {new Date().toLocaleDateString()}
+                </Text>
+              </View>
+            </View>
+          )}
+        />
       </ScrollView>
       <ScrollView style={{ height: 200 }}>
         <Text>Equilibrio nutricional</Text>
+        <FlatList
+          style={{
+            flexDirection: "row",
+            gap: 5,
+            width: "96%",
+            flexWrap: "wrap",
+          }}
+          data={nutricionData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                backgroundColor: "#fff",
+                marginVertical: 10,
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+                padding: 10,
+                borderRadius: 7,
+              }}
+            >
+              <View
+                style={{ backgroundColor: "#015958", padding: 10, width: 350 }}
+              >
+                <Text style={{ color: "#fff" }}>
+                  Nombre: {item.nombre} {item.apellido}
+                </Text>
+                <Text style={{ color: "#fff" }}>Tipo: {item.edad}</Text>
+                <Text style={{ color: "#fff" }}>Cantidad: {item.cantidad}</Text>
+                <Text style={{ color: "#fff" }}>Calorias: {item.calorias}</Text>
+                <Text style={{ color: "#fff" }}>Azucar: {item.azucar}</Text>
+                <Text style={{ color: "#fff" }}>
+                  vitaminas: {item.vitaminas}
+                </Text>
+                <Text style={{ color: "red" }}>
+                  Fecha: {new Date().toLocaleDateString()}
+                </Text>
+              </View>
+            </View>
+          )}
+        />
       </ScrollView>
     </View>
   );

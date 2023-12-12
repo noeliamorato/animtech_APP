@@ -38,7 +38,7 @@ const ModalAdiestramiento = ({ visible, onCancel, onConfirm }) => {
       popular: true,
       image: require("./imgadiestramiento/trucos.jpg"),
     },
-    // Agrega el resto de tus adiestramientos aquí
+
   ];
 
   const renderAdiestramientos = () => {
