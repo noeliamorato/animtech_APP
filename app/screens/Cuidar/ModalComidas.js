@@ -18,7 +18,7 @@ const ModalComidas = () => {
     tipo: "",
     cantidad: "",
     calorias: "",
-    proteina: "",
+    proteinas: "",
     grasa: "",
     carbohidratos: "",
     azucar: "",
@@ -35,7 +35,8 @@ const ModalComidas = () => {
 
   const handleAgregarComida = async () => {
 
-    console.log("Comida agregada:", comida);
+    console.log("Comida:", comida);
+
     const res = await peticionPost("comida", comida);
     if (res) {
       alert(res.message);
@@ -44,7 +45,7 @@ const ModalComidas = () => {
         tipo: "",
         cantidad: "",
         calorias: "",
-        proteina: "",
+        proteinas: "",
         grasa: "",
         carbohidratos: "",
         azucar: "",
@@ -136,8 +137,8 @@ const ModalComidas = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Proteína (g)"
-            value={comida.proteina}
-            onChangeText={(text) => setComida({ ...comida, proteina: text })}
+            value={comida.proteinas}
+            onChangeText={(text) => setComida({ ...comida, proteinas: text })}
           />
         </View>
         <View style={styles.iconInput}>

@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Comida {
+  id            Int      @id @default(autoincrement())
+  nombre        String
+  tipo          String
+  cantidad      String?
+  calorias      String?
+  proteinas     String?
+  grasa         String?
+  carbohidratos String?
+  azucar        String?
+  vitaminas     String[]
+}
+
+model Medicamentos {
+  id     Int     @id @default(autoincrement())
+  nombre String
+  notas  String?
+}
+
+model Desechos {
+  id      Int     @id @default(autoincrement())
+  tipo    String
+  textura String
+  color   String?
+  olor    String?
+}
+
+model Nutricionmascota {
+  id            Int     @id @default(autoincrement())
+  nombre        String
+  tipoAlimento  String
+  cantidad      String?
+  horarios      String?
+  observaciones String?
+}
+
+model Mascotas {
+  id     Int     @id @default(autoincrement())
+  nombre String
+  tipo   String
+  raza   String?
+  peso   String?
+  color  String?
+  foto   String?
+}
+
+model Adiestramiento {
+  id     Int     @id @default(autoincrement())
+  foto   String?
+  titulo String?
+  cuerpo String?
+}
