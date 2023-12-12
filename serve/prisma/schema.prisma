@@ -44,14 +44,15 @@ model Nutricionmascota {
 }
 
 model Mascotas {
-  id       Int     @id @default(autoincrement())
-  nombre   String
-  tipo     String
-  raza     String?
-  peso     String?
-  color    String?
-  foto     String?
+  id     Int     @id @default(autoincrement())
+  nombre String
+  tipo   String
+  raza   String?
+  peso   String?
+  color  String?
+  foto   String?
   fechaNac String?
+  sexo String?
 }
 
 model Adiestramiento {
