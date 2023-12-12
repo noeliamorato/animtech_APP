@@ -45,7 +45,9 @@
     "react-native-vector-icons": "^10.0.2",
     "react-native-web": "~0.19.6",
     "styled-components": "^6.1.0",
-    "zustand": "^4.4.6"
+    "zustand": "^4.4.6",
+    "expo-updates": "~0.18.17",
+    "@react-native-async-storage/async-storage": "1.18.2"
   },
   "private": true
 }

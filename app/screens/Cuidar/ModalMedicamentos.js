@@ -18,10 +18,20 @@ const ModalMedicamentos = () => {
   const handleGuardarMedicamento = () => {
     // Aquí puedes implementar la lógica para guardar el medicamento
     console.log("Medicamento guardado:", medicamento);
+    storeData();
     setMedicamento({
       nombre: "",
       nota: "",
     });
+  };
+
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('@myData:key', medicamento);
+      console.log('Datos guardados correctamente');
+    } catch (error) {
+      console.error('Error al guardar los datos:', error);
+    }
   };
 
   return (
@@ -58,7 +68,7 @@ const ModalMedicamentos = () => {
       </View>
       <TouchableOpacity
         style={styles.guardarButton}
-        onPress={handleGuardarMedicamento}
+        onPress={()=>{handleGuardarMedicamento()}}
       >
         <Text style={styles.guardarButtonText}>Guardar</Text>
       </TouchableOpacity>
