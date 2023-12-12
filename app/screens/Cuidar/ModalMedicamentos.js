@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState } from "react";
 import {
   View,
@@ -14,23 +15,28 @@ const ModalMedicamentos = () => {
     nombre: "",
     nota: "",
   });
-
+  const [savedData, setSavedData] = useState([]);
   const handleGuardarMedicamento = () => {
     // Aquí puedes implementar la lógica para guardar el medicamento
     console.log("Medicamento guardado:", medicamento);
-    storeData();
+    saveData();
     setMedicamento({
       nombre: "",
       nota: "",
     });
   };
 
-  const storeData = async () => {
+  const saveData = async () => {
     try {
-      await AsyncStorage.setItem('@myData:key', medicamento);
-      console.log('Datos guardados correctamente');
+      const newItem = { id: Date.now(), text: medicamento };
+      const updatedData = [...savedData, newItem];
+
+      await AsyncStorage.setItem("medicamento", JSON.stringify(updatedData));
+      setSavedData(updatedData);
+
+      console.log("Datos guardados correctamente");
     } catch (error) {
-      console.error('Error al guardar los datos:', error);
+      console.error("Error al guardar datos:", error);
     }
   };
 
