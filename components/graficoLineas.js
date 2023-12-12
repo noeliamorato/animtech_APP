@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AreaChart, Grid, XAxis, YAxis } from "react-native-svg-charts";
 import * as shape from "d3-shape";
-import { styles } from "../src/screens/Salud";
 
 const GraficoLineas = () => {
   const [data, setData] = useState([

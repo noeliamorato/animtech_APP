@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const TopBar = () => {
   const { setUser, user } = userContext();
 
-const userEmailWithoutDomain = user.email.split("@")[0];
+  const userEmailWithoutDomain = user.email.split("@")[0];
   return (
     <View
       style={{
@@ -19,8 +19,15 @@ const userEmailWithoutDomain = user.email.split("@")[0];
         alignItems: "center",
       }}
     >
-      <TouchableOpacity onPress={() => router.replace("/Login")}>
+      <TouchableOpacity
+        onPress={() => router.push("../../pruba/AsyncStorageApp")}
+      >
         <Text style={{ transform: "rotate(180deg)" }}>
+          <MaterialCommunityIcons name="location-exit" size={24} color="#fff" />
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => router.replace("/Login")}>
+        <Text>
           <MaterialCommunityIcons name="location-exit" size={24} color="#fff" />
         </Text>
       </TouchableOpacity>

@@ -8,13 +8,14 @@ import ModalDesechos from "./ModalDesechos";
 import ModalNutricion from "./ModalNutricion";
 import TopContext from "../../../context/TopContext";
 import { useEffect } from "react";
+import ModalReportes from "./ModalReportes";
 
 const Cuidar = () => {
-  const{setTextoTop}= TopContext();
+  const { setTextoTop } = TopContext();
 
-  useEffect(()=>{
+  useEffect(() => {
     setTextoTop("Cuidar");
-  },[])
+  }, []);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedModal, setSelectedModal] = useState(null);
 
@@ -30,23 +31,43 @@ const Cuidar = () => {
 
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity onPress={() => openModal(<ModalMascota />)} style={styles.button}>
-        <Icon name="paw" size={20} color="#900" />
-        <Text style={styles.buttonText}>Gestión de la mascota</Text>
-      </TouchableOpacity> */}
-      <TouchableOpacity onPress={() => openModal(<ModalComidas />)} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => openModal(<ModalReportes />)}
+        style={{
+          position: "absolute",
+          top: 20,
+          right: 20,
+          ...styles.button,
+          width: 100,
+        }}
+      >
+        <Text style={{...styles.buttonText,   fontSize: 13,}}>Reportes</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => openModal(<ModalComidas />)}
+        style={styles.button}
+      >
         <Icon name="cutlery" size={20} color="#900" />
         <Text style={styles.buttonText}>Gestión de comidas</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => openModal(<ModalMedicamentos />)} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => openModal(<ModalMedicamentos />)}
+        style={styles.button}
+      >
         <Icon name="medkit" size={20} color="#900" />
         <Text style={styles.buttonText}>Gestión de medicación</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => openModal(<ModalDesechos />)} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => openModal(<ModalDesechos />)}
+        style={styles.button}
+      >
         <Icon name="trash" size={20} color="#900" />
         <Text style={styles.buttonText}>Gestión de desechos</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => openModal(<ModalNutricion />)} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => openModal(<ModalNutricion />)}
+        style={styles.button}
+      >
         <Icon name="leaf" size={20} color="#900" />
         <Text style={styles.buttonText}>Equilibrio nutricional</Text>
       </TouchableOpacity>
@@ -92,24 +113,22 @@ const styles = StyleSheet.create({
     width: 250,
   },
   buttonText: {
-    
     fontSize: 18,
     fontWeight: "bold",
     marginLeft: 10,
   },
-  centeredView: {   
+  centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   modalView: {
-    width:"100%",
-    height:"100%",
+    width: "100%",
+    height: "100%",
     backgroundColor: "white",
     alignItems: "center",
   },
   closeModalText: {
-    
     fontSize: 18,
     color: "blue",
     marginTop: 10,

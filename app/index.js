@@ -21,6 +21,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import Login from "./Login";
+import Cuidar from "./screens/Cuidar";
 
 const Index = () => {
   return <Login />;

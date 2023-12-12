@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState } from "react";
 import {
   View,
@@ -9,6 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { peticionPost } from "../../../services/postRequest";
 
 const ModalComidas = () => {
   const [comida, setComida] = useState({
@@ -31,20 +33,25 @@ const ModalComidas = () => {
   ];
   const unidadesDeMedida = ["kg", "g", "grams", "unidades", "oz"]; // Puedes agregar más opciones según necesites
 
-  const handleAgregarComida = () => {
-    // Implementa la lógica para agregar la comida
+  const handleAgregarComida = async () => {
+
     console.log("Comida agregada:", comida);
-    setComida({
-      nombre: "",
-      tipo: "",
-      cantidad: "",
-      calorias: "",
-      proteina: "",
-      grasa: "",
-      carbohidratos: "",
-      azucar: "",
-      vitaminas: [],
-    });
+    const res = await peticionPost("comida", comida);
+    if (res) {
+      alert(res.message);
+      setComida({
+        nombre: "",
+        tipo: "",
+        cantidad: "",
+        calorias: "",
+        proteina: "",
+        grasa: "",
+        carbohidratos: "",
+        azucar: "",
+        vitaminas: [],
+      });
+    }
+   
   };
 
   const handleVitaminasSelection = (vitamina) => {
@@ -111,12 +118,7 @@ const ModalComidas = () => {
           />
         </View>
         <View style={styles.iconInput}>
-          <Icon
-            name="whatshot"
-            size={20}
-            color="#900"
-            style={styles.icon}
-          />
+          <Icon name="whatshot" size={20} color="#900" style={styles.icon} />
           <TextInput
             style={styles.textInput}
             placeholder="Calorías (kcal)"
@@ -125,7 +127,12 @@ const ModalComidas = () => {
           />
         </View>
         <View style={styles.iconInput}>
-          <Icon name="restaurant-menu" size={20} color="#900" style={styles.icon} />
+          <Icon
+            name="restaurant-menu"
+            size={20}
+            color="#900"
+            style={styles.icon}
+          />
           <TextInput
             style={styles.textInput}
             placeholder="Proteína (g)"
@@ -143,7 +150,12 @@ const ModalComidas = () => {
           />
         </View>
         <View style={styles.iconInput}>
-          <Icon name="emoji-food-beverage" size={20} color="#900" style={styles.icon} />
+          <Icon
+            name="emoji-food-beverage"
+            size={20}
+            color="#900"
+            style={styles.icon}
+          />
           <TextInput
             style={styles.textInput}
             placeholder="Carbohidratos (g)"
@@ -192,11 +204,11 @@ const ModalComidas = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width:'85%',
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        paddingTop: 60,
+    width: "85%",
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    paddingTop: 60,
   },
   scrollView: {
     flexGrow: 1,
@@ -205,7 +217,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
-    
   },
   input: {
     height: 40,
@@ -232,7 +243,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   sectionTitle: {
-    
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 20,
