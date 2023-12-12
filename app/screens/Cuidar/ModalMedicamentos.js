@@ -74,7 +74,7 @@ const ModalMedicamentos = () => {
       </View>
       <TouchableOpacity
         style={styles.guardarButton}
-        onPress={handleGuardarMedicamento}
+        onPress={()=>{handleGuardarMedicamento()}}
       >
         <Text style={styles.guardarButtonText}>Guardar</Text>
       </TouchableOpacity>

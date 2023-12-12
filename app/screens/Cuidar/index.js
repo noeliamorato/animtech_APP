@@ -47,6 +47,15 @@ const Cuidar = () => {
         onPress={() => openModal(<ModalComidas />)}
         style={styles.button}
       >
+      <TouchableOpacity onPress={() => openModal(<ModalReportes />)} style={styles.button}>
+        <Icon name="leaf" size={20} color="#900" />
+        <Text style={styles.buttonText}>Reportes</Text>
+      </TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => openModal(<ModalMascota />)} style={styles.button}>
+        <Icon name="paw" size={20} color="#900" />
+        <Text style={styles.buttonText}>Gestión de la mascota</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity onPress={() => openModal(<ModalComidas />)} style={styles.button}>
         <Icon name="cutlery" size={20} color="#900" />
         <Text style={styles.buttonText}>Gestión de comidas</Text>
       </TouchableOpacity>
