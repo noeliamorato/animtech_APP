@@ -51,6 +51,8 @@ model Mascotas {
   peso   String?
   color  String?
   foto   String?
+  fechaNac String?
+  sexo String?
 }
 
 model Adiestramiento {
